@@ -37,7 +37,11 @@ const state = {
 
 export default new Vuex.Store({
 	state,
-	getters,
+	getters:{
+		mixLocation: state => {
+			return state.latitude + state.longitude
+		}
+	},
 	actions,
 	mutations,
 })

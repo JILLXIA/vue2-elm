@@ -7,7 +7,7 @@
 				</section>
 				<hgroup class="shop_right">
 					<header class="shop_detail_header">
-						<h4 :class="item.is_premium? 'premium': ''" class="" class="shop_title ellipsis">{{item.name}}</h4>
+						<h4 :class="item.is_premium? 'premium': ''" class="shop_title ellipsis">{{item.name}}</h4>
 						<ul class="shop_detail_ul">
 							<li v-for="item in item.supports" :key="item.id" class="supports">{{item.icon_name}}</li>
 						</ul>
@@ -86,6 +86,7 @@ export default {
 		}
 	},
 	mounted(){
+		console.log('mounted')
 		this.initData();
 	},
 	components: {
@@ -94,12 +95,12 @@ export default {
 	},
 	props: ['restaurantCategoryId', 'restaurantCategoryIds', 'sortByType', 'deliveryMode', 'supportIds', 'confirmSelect', 'geohash'],
 	mixins: [loadMore, getImgPath],
-	computed: {
-		...mapState([
-			'latitude','longitude'
-		]),
-	},
+	computed: mapState({
+		latitude: state => state.latitude,
+		longitude: state => state.longitude
+	}),
 	updated(){
+		console.log('updated')
 		// console.log(this.supportIds, this.sortByType)
 	},
 	methods: {

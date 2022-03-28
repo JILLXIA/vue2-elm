@@ -7,9 +7,9 @@
 	    			<line x1="14" y1="14" x2="20" y2="20" style="stroke:rgb(255,255,255);stroke-width:2"/>
 	    		</svg>
     		</router-link>
-			<router-link to="/home" slot="msite-title" class="msite_title">
+			<div slot="msite-title" class="msite_title">
 				<span class="title_text ellipsis">{{msiteTitle}}</span>
-			</router-link>
+			</div>
     	</head-top>
     	<nav class="msite_nav">
     		<div class="swiper-container" v-if="foodTypes.length">

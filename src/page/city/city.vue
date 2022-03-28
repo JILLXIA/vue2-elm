@@ -100,6 +100,7 @@
                     this.placeHistory.push(choosePlace)
                 }
                 setStore('placeHistory',this.placeHistory)
+                // 跳转到商家页面
                 this.$router.push({path:'/msite', query:{geohash}})
             },
             clearAll(){

@@ -106,9 +106,11 @@
                                                 <h3 class="food_description_head">
                                                     <strong class="description_foodname">{{foods.name}}</strong>
                                                     <ul v-if="foods.attributes.length" class="attributes_ul">
-                                                        <li v-if="attribute" v-for="(attribute, foodindex) in foods.attributes" :key="foodindex" :style="{color: '#' + attribute.icon_color,borderColor:'#' + attribute.icon_color}" :class="{attribute_new: attribute.icon_name == '新'}">
-                                                          <p :style="{color: attribute.icon_name == '新'? '#fff' : '#' + attribute.icon_color}">{{attribute.icon_name == '新'? '新品':attribute.icon_name}}</p>
-                                                        </li>
+                                                        <template v-for="(attribute, foodindex) in foods.attributes" >
+                                                            <li :key="foodindex" v-if="attribute"  :style="{color: '#' + attribute.icon_color,borderColor:'#' + attribute.icon_color}" :class="{attribute_new: attribute.icon_name == '新'}">
+                                                            <p :style="{color: attribute.icon_name == '新'? '#fff' : '#' + attribute.icon_color}">{{attribute.icon_name == '新'? '新品':attribute.icon_name}}</p>
+                                                            </li>
+                                                        </template>
                                                     </ul>
 
                                                 </h3>
@@ -277,7 +279,7 @@
                     <section class="specs_details">
                         <h5 class="specs_details_title">{{choosedFoods.specifications[0].name}}</h5>
                         <ul>
-                            <li v-for="(item, itemIndex) in choosedFoods.specifications[0].values" :class="{specs_activity: itemIndex == specsIndex}" @click="chooseSpecs(itemIndex)">
+                            <li v-for="(item, itemIndex) in choosedFoods.specifications[0].values" :key="itemIndex" :class="{specs_activity: itemIndex == specsIndex}" @click="chooseSpecs(itemIndex)">
                                 {{item}}
                             </li>
                         </ul>
@@ -300,6 +302,7 @@
         @after-appear = 'afterEnter'
         @before-appear="beforeEnter"
         v-for="(item,index) in showMoveDot"
+        :key="index"
         >
             <span class="move_dot" v-if="item">
                 <svg class="move_liner">
